@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Murach Survey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles/survey.css" />
+</head>
+<!-- Đổi theme bằng cách thay theme-teal ↔ theme-red -->
+<body class="theme-teal">
+  <!-- HEADER BAR -->
+  <header class="header-bar">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="images/murachlogo.jpg" alt="Murach" class="logo" />
+        <span class="brand-name">Murach</span>
+      </div>
+      <div class="headline">
+        <h1>Survey</h1>
+        <p>If you have a moment, we'd appreciate it if you would fill out this survey.</p>
+      </div>
+      <div class="spacer"></div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container main">
+    <form action="survey" method="post" class="form-card" novalidate>
+      <!-- Your information -->
+      <section class="section">
+        <h2 class="section-title">Your information</h2>
+
+        <div class="grid grid-3">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="dob">Date of Birth</label>
+            <input id="dob" name="dateOfBirth" type="date" />
+          </div>
+          <div class="field">
+            <label for="contact">Preferred contact</label>
+            <select id="contact" name="contact">
+              <option>Email or postal mail</option>
+              <option>Email only</option>
+              <option>Postal mail only</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- How did you hear -->
+      <section class="section">
+        <h2 class="section-title">How did you hear about us?</h2>
+        <div class="choices">
+          <label class="chip"><input type="radio" name="source" value="search" checked /> Search engine</label>
+          <label class="chip"><input type="radio" name="source" value="word" /> Word of mouth</label>
+          <label class="chip"><input type="radio" name="source" value="social" /> Social Media</label>
+          <label class="chip"><input type="radio" name="source" value="other" /> Other</label>
+        </div>
+      </section>
+
+      <!-- Announcements -->
+      <section class="section">
+        <h2 class="section-title">Announcements</h2>
+        <div class="choices choices-col">
+          <label class="check"><input type="checkbox" name="like" value="yes_like" /> YES, I'd like that.</label>
+          <label class="check"><input type="checkbox" name="email_ann" value="yes_email" /> YES, please send me email announcements.</label>
+          <label class="check"><input type="checkbox" name="agree" value="consent" /> I agree to receive emails from Murach.</label>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="btn" type="submit" aria-label="Submit survey">Submit</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="container site-footer">
+    <small>© 2025 Murach Survey</small>
+  </footer>
+</body>
+</html>

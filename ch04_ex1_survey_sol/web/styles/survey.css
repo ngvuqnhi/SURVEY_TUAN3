@@ -1,0 +1,148 @@
+/* ============ THEME TOKENS ============ */
+/* Chọn theme bằng class trên <body>: theme-teal (xanh) hoặc theme-red */
+:root{
+  --radius: 16px;
+  --shadow: 0 12px 32px rgba(2, 8, 23, .08);
+  --text: #0f172a;
+  --muted: #475569;
+  --bg: #fafafa;
+  --card: #ffffff;
+  --border: #e6e9ee;
+  --ring-alpha: .18;
+}
+body.theme-teal{
+  --brand: #127b77;     /* header */
+  --brand-strong: #0f6663;
+  --accent: #12a7a2;    /* nhấn/hover */
+  --accent-2: #0ea5e9;  /* phụ */
+  --bg-accent: #ecfbfa; /* nền nhẹ cho card */
+}
+body.theme-red{
+  --brand: #c81d25;
+  --brand-strong: #a8161d;
+  --accent: #e11d2e;
+  --accent-2: #ef4444;
+  --bg-accent: #fff1f2;
+}
+
+/* ============ BASE ============ */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 700px at 50% -10%, rgba(0,0,0,.06), transparent 60%),
+    var(--bg);
+  line-height:1.6;
+}
+.container{ max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+/* ============ HEADER ============ */
+.header-bar{
+  background: linear-gradient(0deg, var(--brand-strong), var(--brand));
+  color:#fff;
+  position: sticky; top:0; z-index: 20;
+  box-shadow: 0 2px 14px rgba(0,0,0,.15);
+}
+.header-inner{ display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap:16px; padding: 10px 0; }
+.brand{ display:flex; align-items:center; gap:10px; }
+.logo{ width:44px; height:44px; border-radius:50%; object-fit:cover; background:#fff; }
+.brand-name{ font-weight:800; letter-spacing:.3px; }
+
+.headline{ text-align:center; }
+.headline h1{ margin:0; font-size: clamp(22px, 2.8vw, 36px); font-weight: 900; }
+.headline p{ margin:2px 0 0; opacity:.9; font-size: .95rem; }
+.spacer{ width:44px; } /* cân lề với logo bên trái */
+
+/* ============ MAIN / CARD ============ */
+.main{ padding: 18px 0 28px; }
+.form-card{
+  margin: 18px auto 28px;
+  background: linear-gradient(0deg, var(--card), var(--card)) padding-box,
+              linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,0)) border-box;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 3.2vw, 30px);
+  backdrop-filter: saturate(1.2);
+}
+.section{ margin-bottom: 18px; }
+.section-title{
+  margin: 0 0 12px;
+  font-size: 18px; font-weight: 900; letter-spacing:.2px;
+  color: var(--brand-strong);
+  position: relative; padding-left: 10px;
+}
+.section-title::before{
+  content:""; position:absolute; left:0; top:.35em; bottom:.35em;
+  width:4px; background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 4px;
+}
+
+/* ============ GRID (đặt các field trên 1 hàng ở desktop) ============ */
+.grid{ display:grid; gap: 14px; }
+.grid-3{ grid-template-columns: repeat(3, 1fr); }
+.grid-2{ grid-template-columns: repeat(2, 1fr); }
+
+@media (max-width: 920px){
+  .grid-3{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px){
+  .grid-3, .grid-2{ grid-template-columns: 1fr; }
+}
+
+/* ============ FIELD ============ */
+.field label{
+  display:block; font-weight:700; margin-bottom:6px; font-size:14px;
+}
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="date"],
+.field select{
+  width:100%;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius: 12px;
+  background:#fff;
+  font: inherit;
+  transition: border-color .2s, box-shadow .2s, transform .05s ease;
+}
+.field input:hover, .field select:hover{ transform: translateY(-1px); }
+.field input:focus, .field select:focus{
+  outline:none; border-color: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in lab, var(--accent) 18%, transparent);
+}
+
+/* ============ CHOICES (radio/checkbox kiểu chip) ============ */
+.choices{ display:flex; flex-wrap:wrap; gap: 12px 16px; }
+.choices-col{ flex-direction: column; gap: 10px; }
+.chip, .check{
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px;
+  border:1px solid var(--border);
+  border-radius: 999px;  /* chip */
+  background:#fff; cursor:pointer;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.check{ border-radius: 12px; } /* checkbox dạng thẻ */
+.choices input{ accent-color: var(--accent); }
+.chip:hover, .check:hover{ border-color: var(--accent); box-shadow: 0 0 0 6px color-mix(in lab, var(--accent) var(--ring-alpha), transparent); }
+
+/* ============ ACTIONS ============ */
+.actions{ margin-top: 10px; }
+.btn{
+  display:block; width:100%;
+  padding: 13px 22px;
+  background: linear-gradient(180deg, var(--brand), var(--brand-strong));
+  color:#fff; border:0; border-radius: 14px;
+  font-weight:900; letter-spacing:.2px; cursor:pointer;
+  box-shadow: 0 12px 26px color-mix(in lab, var(--brand) 30%, transparent), inset 0 -2px 0 rgba(0,0,0,.12);
+  transition: transform .08s ease, box-shadow .2s ease, filter .2s ease;
+}
+.btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+.btn:active{ transform: translateY(0); box-shadow: 0 8px 18px color-mix(in lab, var(--brand) 24%, transparent); }
+
+/* ============ FOOTER ============ */
+.site-footer{ padding-bottom: 28px; color: var(--muted); text-align:center; }
